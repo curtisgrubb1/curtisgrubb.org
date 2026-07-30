@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curtis Grubb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0b09;
+    --bg-surface: #151210;
+    --bg-card: #1a1714;
+    --text: #c8bfb2;
+    --text-dim: #7a7168;
+    --text-faint: #4a433c;
+    --gold: #c4a46a;
+    --gold-dim: #8a7550;
+    --warm-white: #e8dfd2;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* === SCROLL REVEAL === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(13,11,9,0.95), rgba(13,11,9,0));
+    transition: opacity 0.6s ease;
+  }
+  nav.hidden { opacity: 0; pointer-events: none; }
+  .nav-name {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(196,164,106,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim));
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: lineGrow 2s ease 0.5s forwards;
+  }
+  @keyframes lineGrow {
+    from { opacity: 0; height: 0; }
+    to { opacity: 1; height: 80px; }
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 80px);
+    color: var(--warm-white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-epithet {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1.6s forwards;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    opacity: 0;
+    animation: fadeUp 1.5s ease 2.2s forwards;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: var(--text-faint);
+    margin: 12px auto 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* === SECTIONS === */
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 40px;
+  }
+
+  .section-label {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 40px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 80px auto;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--warm-white);
+    line-height: 1.3;
+    margin-bottom: 32px;
+  }
+
+  p {
+    margin-bottom: 24px;
+    font-size: 19px;
+  }
+
+  p.italic-voice {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1.8;
+  }
+
+  a.text-link {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    transition: border-color 0.3s;
+  }
+  a.text-link:hover {
+    border-color: var(--gold);
+  }
+
+  /* === THE WAY SECTION === */
+  .way-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(196,164,106,0.1);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-top: 40px;
+    text-align: center;
+    transition: border-color 0.4s;
+  }
+  .way-card:hover {
+    border-color: rgba(196,164,106,0.25);
+  }
+  .way-card-name {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 16px;
+  }
+  .way-card-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+  .way-card-desc {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 17px;
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .way-link {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 12px 32px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .way-link:hover {
+    background: rgba(196,164,106,0.08);
+    border-color: var(--gold);
+  }
+
+  /* === WRITINGS === */
+  .writing-entry {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(196,164,106,0.08);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .writing-entry:first-of-type {
+    border-top: 1px solid rgba(196,164,106,0.08);
+  }
+  .writing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .writing-toggle {
+    font-family: var(--sans);
+    font-size: 18px;
+    color: var(--gold-dim);
+    transition: transform 0.4s ease, color 0.3s;
+    flex-shrink: 0;
+    margin-left: 16px;
+    margin-top: 4px;
+  }
+  .writing-entry.open .writing-toggle {
+    transform: rotate(45deg);
+    color: var(--gold);
+  }
+  .writing-date {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+  }
+  .writing-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--warm-white);
+    margin-bottom: 8px;
+  }
+  .writing-excerpt {
+    color: var(--text-dim);
+    font-size: 17px;
+  }
+  .writing-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease, opacity 0.6s ease;
+    opacity: 0;
+  }
+  .writing-entry.open .writing-body {
+    max-height: 20000px;
+    opacity: 1;
+  }
+  .writing-body-inner {
+    padding-top: 32px;
+  }
+  .writing-body-inner p {
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .writing-body-inner .article-break {
+    width: 32px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 40px 0;
+  }
+  .writing-body-inner .chapter-title {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+  }
+
+  /* === CONTACT === */
+  .contact-section {
+    text-align: center;
+    padding: 160px 40px;
+  }
+  .contact-section h2 {
+    margin-bottom: 24px;
+  }
+  .contact-email {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .contact-email:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    section { padding: 80px 24px; }
+    .way-card { padding: 36px 24px; }
+    .contact-section { padding: 100px 24px; }
+  }
+</style>
+<script type='text/javascript' src='https://api.netlify.com/9KssdJBxcJHSAW7z-L3hztVhD-PSClsbWZsx7wtd9Pu7VjQlIisjovTWQmYoWuY4cttt4NHCljV-GIlcrw-7PK3eZ6ca8fxNY091gjBjXHxnkxEa0lf1eJ9u8s1aKXcawFW-HJ9ek8J8OyAGgTbpldERMA5xCTq3hoHZXHwn-M70yltQXRpNI3smIOKIrPJWqyEAkjk-Y82KKjZDFE7wLRVKoOdxx8qiSTe59kEuGym-Ba1PdhnnIul3QZFjyyZyclrEzxSjlJFrincZky_u5rPn-cgOGaifRdOiRHO56Rfh5HHRT782Uu4CkzG_NaEXEwqvX4qIeg2KoNzi_N4b22cO56zqxPPdXnZT6rES0rhjyujUxjprV3Zuli2k7QGazAicQO5Sp-yigwHfbIp3h-WsL20pMgnYOt9hTcr7Hx0jLVg2ImaED9OCMrjHY8BKg7N1IW938aFrz3FdMdZxTdNYs5WN41_zmhDEciU4DbQ5LiBv7_UPKea3Z7MP-V6bdMrT3acuT_ny7ICXKq8C'></script><script type='text/javascript' src='https://api.netlify.com/Q4wTZZOdBNzujeMkXsxDTJmfyF3CTe8evHaXqVG-NzfPlLm7_gNSfFbqXvvJHGJWnEdesT3Gf8VXZZtxTi1yUiW6Za2ZmxMoqBjssJ-4a6jy5BvfRzKkLoIQtasqlJp7ey6Tte_ZzY0izLXUwD9vIpzcLS48JnA1DwltE2Kph1dy4t1bMlH25xkwpkoqHBG9O3HglzyCQgP1iprex6itv8jPtyAisL3gU8ExB5BsBBiZKuErVg-y_D2oMjTFKRi5GBIYvU-HhNfLsYvZDRZEHC2pRF_hVT3hfeKTU2Kmq0mYZLHEEJBKYHpnXr6ddqbOC-iw3P_sQn1zF1i8tdjilMxJlkEl8I2o-xPDXHM4BNES3e_Ey_OMC5NOsF7n1qwlXtCgLn1AoQcg1KttAHlCZfVtA8150K4-UPsczOXhO249CtNC_Xd2YNHUyC_QznWPfaj3UJN4e06B2MwIZy1kLqM9YZhb5voS84fxXariBrA1J-zAxtEp7R5BjSr88KSwwNd8QJKfVXDIDJGWITLz'></script></head>
+<body>
+
+<nav id="nav">
+  <span class="nav-name">Curtis Grubb</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-line"></div>
+  <h1 class="hero-name">Curtis Grubb</h1>
+  <p class="hero-epithet">Poet, prophet, prince. Utterly useless.</p>
+  <div class="hero-scroll">Enter</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p>
+      There are books that change everything. Not because they're clever, but because they're true in a way that goes all the way down.
+    </p>
+    <p>
+      The ones I've found — A Course in Miracles, the I Ching, the releasing tradition of Lester Levenson — aren't really separate things. They're different angles on the same recognition: there is a sense of separation at the root of human suffering, and it can be undone. Not managed. Not coped with. The way of that undoing is the most significant knowledge of our age.
+    </p>
+    <p>
+      This is the mythological return to Eden. The Tree of Life was never taken from you. You are the Tree of Life. The way back isn't forward into more achieving — it's the recognition that everything appearing to be in the way can be released. And when it is, what remains was always there. Whole. Free. Loving.
+    </p>
+    <p>
+      Beyond religion, because it sees religion entirely and lets it go. A form of Christian Advaita. The end of Christianity and its deepest fulfillment at once. Perfect remembrance of oneness with the One, and nothing else.
+    </p>
+    <p>
+      What I want you to know is this: you are not broken. You never were. There is nothing in your life that cannot be released, if you're willing. And the willingness — that too is already in you, waiting. You're closer than you think. Infinitely closer.
+    </p>
+  </div>
+</section>
+
+<div class="divider reveal"></div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="reveal">
+    <p>
+      The Way is a daily practice app. Each day, a lesson from A Course in Miracles. Each practice, a reading from the I Ching. The ancient and the immediate, meeting in the same space.
+    </p>
+    <p>
+      I built it because I needed it. That's the only honest reason to build anything.
+    </p>
+
+    <div class="way-card">
+      <p class="way-card-name">The Unwinding Way</p>
+      <p class="way-card-title">The Way</p>
+      <p class="way-card-desc">
+        365 days of A Course in Miracles. The I Ching as oracle. A practice, not a product.
+      </p>
+      <a href="https://theunwindingway.com" class="way-link" target="_blank">Enter The Way</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal"></div>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="reveal">
+    <h2>Reflections</h2>
+    <p>
+      Notes from the practice. Not instruction — just honest account of what it's like to work with these tools day after day.
+    </p>
+
+    <div class="writing-entry" onclick="toggleWriting(this)">
+      <div class="writing-header">
+        <div>
+          <p class="writing-title">Accumulated Wisdom</p>
+          <p class="writing-excerpt">Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.</p>
+        </div>
+        <span class="writing-toggle">+</span>
+      </div>
+      <div class="writing-body">
+        <div class="writing-body-inner">
+          <p class="chapter-title">Chapter 1 — On Thinking</p>
+          <p>The mind is a prison. You are the warden and the inmate. Thoughts are the constant chatter of the guards. You watch them. You name them. You try to organize them. You believe them.</p>
+          <p>This is the prison. The endless effort to manage the stream. The exhaustion of the one who watches. The seer. It is tired. It has been on duty for a lifetime.</p>
+          <p>There is another way. It is not a new technique. It is not a belief system. It is a state of being. Stillness.</p>
+          <p>A mountain does not try to be still. It is still. This is its nature. Wind and storms pass over it. Snow covers it. The sun warms it. The mountain does not move. It allows.</p>
+          <p>Your thoughts are the weather. They come and go. You are not the weather. You are the mountain. The practice is not to stop the storm. It is to remember you are the mountain.</p>
+          <p>The prison of the mind is built from one thing: the seer. The one who believes the thoughts are real. The one who needs them to mean something. The one who says, "I am thinking this."</p>
+          <p>What if the one who says this is the thought?</p>
+          <p>This is the release. Not a fight. A letting go. A decrease of the one who holds on.</p>
+          <p>A Course in Miracles calls this the Holy Instant. It is the moment you stop listening to the ego's chatter and choose silence. It is the choice to be still.</p>
+          <p>The I Ching speaks of the superior person who "does not permit their thoughts to go beyond the situation." They are so present, so still, the thought has no power to pull them out of the moment. It arises, and it passes.</p>
+          <p>The Releasing tradition points to the ultimate freedom. The release of the "releaser." The "I" who is trying to let go. When you let go of that one, what remains? Stillness. Pure. Unmoved.</p>
+          <p>There is a danger here. A trap. The pride of stillness.</p>
+          <p>You begin to feel quiet. You feel a peace. The mind calms. A new thought arises: "I am the one who is still. I have achieved this. I am spiritual."</p>
+          <p>This is the last guard in the prison. The most subtle one. Do not believe it. This is still the seer, wearing a new robe. Release this one too. Be the absence of the one who is proud of being still.</p>
+          <p>Be that absence. The room fills on its own.</p>
+          <p>This chapter is not an answer. It is a pointing. It is a finger pointing to the moon. Do not look at the finger. Look where it points.</p>
+          <p>The mountain is there. It has always been there. It is not hiding. It is waiting.</p>
+          <p>Be still.</p>
+
+          <div class="article-break"></div>
+
+          <p class="chapter-title">Chapter 2 — On Speaking</p>
+          <p>You use words to build bridges. You talk to connect. You argue to prove. You explain to be understood. You fill the silence so you are not alone.</p>
+          <p>This is a performance. A desperate attempt to create union on the outside because you feel a lack on the inside. You are trying to gather water with a net. You are holding to the wrong thing.</p>
+          <p>True connection is not made with words. It is revealed through them.</p>
+          <p>Water on the earth flows naturally toward the lowest point. It does not decide to gather. It does not strategize. It follows its nature. This is "Holding Together."</p>
+          <p>Right speech is a byproduct of this inner state. It is not a technique to be learned. The practice is not to speak better. The practice is to release everything that prevents you from being held together by the truth of what you are.</p>
+          <p>Every word is either an expression of love or a call for love. The ego's speech is a frantic call for love disguised as attack or defense. It is the sound of separation. True speech is the quiet joining that happens when the fear of separation is released. It needs very few words.</p>
+          <p>The superior person's words have weight because they come from a centered place. They are like water that has already gathered. Their flow is natural and purposeful because they are already "holding together" internally.</p>
+          <p>The urge to speak is a feeling. A pressure in the chest. A fear of being misunderstood. This feeling can be welcomed and released. When the pressure is gone, what remains? Either profound silence, or words that arise from that silence, not from the need to escape it.</p>
+          <p>Sometimes you feel numb. You think, "I have nothing to say." Or "Nothing matters." This is not peace. It is a blockage. The instruction is to stop pretending. Let yourself settle. Find the one true thing, however small, and speak from that.</p>
+          <p>You fear silence. You fear being alone. This fear keeps you talking. But the loneliness of releasing the need to impress or defend is the very doorway to genuine union. Speaking from this place of true solitude is what creates real connection.</p>
+          <p>There is another trap. The spiritual ego. It uses silence as a badge of honor. This is the "pride of distance." It keeps you safe from vulnerability. True joining requires you to be seen. You must be willing to step in with both feet and speak from the heart, even if your voice shakes.</p>
+          <p>Right speech is impossible when the household of the self is in chaos. The part that wants to talk. The part that is afraid. The part that wants to hide. They are all in one house.</p>
+          <p>The practice is not to control these parts. It is to tend the inner fire. To create a quality of inner warmth so consistent that every part feels held.</p>
+          <p>Words must have substance. What is said must match what is felt.</p>
+          <p>When your inner world is aligned, your outer expression will organize itself. It will flow like water.</p>
+
+          <div class="article-break"></div>
+
+          <p class="chapter-title">Chapter 3 — On Doing</p>
+          <p>You want to be still. The world requires you to do.</p>
+          <p>This is the core opposition. The desire for non-action. The demand for action.</p>
+          <p>Fire above lake. Heat rising, water sinking. Two natural movements that can never meet because they move in opposite directions.</p>
+          <p>This is not a problem to be solved. It is a reality to be accepted. Opposition in itself is not a disaster. What's disastrous is the insistence that everything must agree. Stop insisting. The practice is not to choose one side over the other. The practice is to release the feeling of being torn apart by the choice.</p>
+          <p>You are asked to be in the world but not of it. The opposition is between the ego's frantic "doing" and the Holy Spirit's peaceful "being." The practice is to let all action be done <em>through</em> you, as you rest in the awareness of your true being. You do not stop acting. You stop believing you are the one who is acting.</p>
+          <p>The superior person navigates opposition by acting according to the time. Sometimes the right action is to advance. Sometimes it is to retreat. Wisdom is not in choosing a side, but in knowing which movement the moment requires. Action and non-action are both tools in your hand.</p>
+          <p>The opposition is felt as a pressure, a tension in your being. The practice is to release that feeling of tension. You don't solve the paradox. You release the feeling of being torn apart <em>by</em> the paradox. When the feeling is released, you can act freely, even if the contradiction remains.</p>
+          <p>This practice will isolate you.</p>
+          <p>You will feel like a stranger among your own people. They will not understand your new priorities, your need for silence, your reluctance to engage in old dramas. You will feel the ache of wanting their approval. The longing for someone who sees what you see.</p>
+          <p>This is the teaching. Meet the true person. Not out there. In here.</p>
+          <p>In the opposition itself, there is a part of you that has been waiting for exactly this isolation to become visible. Release the wanting of external connection. The connection you need is with the part of yourself that thrives in opposition. The part that gets clearer when challenged. The part that was never looking for agreement. Trust that part. Let the opposition introduce you to yourself.</p>
+          <p>This is the secret: welcoming the contradiction <em>is</em> the practice.</p>
+          <p>This welcoming is a form of "Decrease." You are subtracting the demand for a tidy, non-paradoxical reality. You are subtracting the need for everyone to understand.</p>
+          <p>Each subtraction reveals what was always underneath. By letting go of the need to reconcile, you reveal the simple, clear fact of your own Being. It can hold any opposition without breaking.</p>
+          <p>Less is genuinely more.</p>
+          <p>By doing less to resolve the opposition, you gain more of your own centered power. The decrease of the need to reconcile is the increase of your capacity to be.</p>
+
+          <div class="article-break"></div>
+
+          <p class="chapter-title">Chapter 4 — On Wishing</p>
+          <p>You wish. The world does not answer.</p>
+          <p>Heaven and earth move apart. The creative rises away. The receptive sinks down. A silence grows between them. This is Standstill.</p>
+          <p>Your wishing feels like shouting into a void. The desire for more, for different, for better. It meets a frozen landscape. Unresponsive. Cold.</p>
+          <p>This is not failure. It is a season.</p>
+          <p>The ground freezes not because it is dead, but because what is alive needs protection. What is being protected right now is something too new, too tender, too true to be exposed to the noise of constant activity. Something is working underground. It does not need to be checked on. It needs to be left alone.</p>
+          <p>The practice is not to fight the stillness. It is to honor it. It is a "Decrease" of all striving. All effort. All spiritual performance.</p>
+          <p>This is the dark night of the soul. The time to withdraw belief in the ego's frantic solutions and simply wait in the quiet darkness. Trust the light is there, even when you cannot see it. This is the ultimate not-doing.</p>
+          <p>Standstill is a specific time in the cycle. The superior person does not force progress. They conserve their energy. They wait for the season to turn.</p>
+          <p>The feeling of being stuck is a heavy energy. Do not try to release a specific wanting. Release the entire feeling of being stuck. Welcome the stagnation. The grief. The shame. Release the resistance to standstill itself.</p>
+          <p>In this stillness, voices will arise. The lesser voices that flatter and perform. They say, "You should be doing more. Feeling more. Being more." These voices sound like ambition. They are actually grief. The mourning of a self that was defined by its doing and now has nothing to do.</p>
+          <p>Release the doing-self.</p>
+          <p>The great person endures standstill without complaining. Without pretending it is not happening. Just be in it. Honestly. Without performing patience. Without narrating your own progress. Just be in the quiet. Let the grief of inactivity wash through you until it runs out of things to mourn.</p>
+          <p>Something embarrassing will surface. A pretense you have been maintaining. A spiritual performance that worked when things were moving, but now, in the stillness, stands exposed. The fear is acute: if this is seen, everything crumbles.</p>
+          <p>Good.</p>
+          <p>Let it crumble. The pretense was always crumbling. The standstill just made it visible. Release the shame. Recognize that the one who was pretending was itself a pretense. What was imagined pretended to be spiritual. Now the pretense is visible. This visibility is not the problem. It is the cure. What is revealed can finally be released. What is hidden keeps operating.</p>
+          <p>The standstill will end.</p>
+          <p>When it does, something will "Come to Meet" you. An old wanting. A comfort that slips back in through a crack left open. This happens not during the struggle, but after. In the comfort of having made progress. In the relaxation that follows breakthrough.</p>
+          <p>That is when the dark line enters.</p>
+          <p>Be vigilant. See the approaching wanting for what it is. Before it takes root.</p>
+
+          <div class="article-break"></div>
+
+          <p class="chapter-title">Chapter 5 — On Living</p>
+          <p>Sometimes, everything is in its right place. The practice works. The inner and outer worlds align. A moment of perfect order. This is "After Completion."</p>
+          <p>Water above fire. Every line in its correct position. For one rare, perfect moment, everything is exactly where it belongs.</p>
+          <p>And now, the most important thing you will ever hear: after completion comes before completion. The moment of perfect order is also the moment when disorder begins its return. Not because something went wrong. Because that is how reality works.</p>
+          <p>The fox that almost crossed the water gets its tail wet at the very end. The art of living is enjoying the perfection without clinging to it. What clings to perfection is the sense of separation, and its fingerprints on perfection are the first signs of dissolution.</p>
+          <p>The practice is not to hold onto the good, but to release the attachment to it. It is a "Decrease" of the need for the good moment to last forever.</p>
+          <p>Even the highest states of peace are still within the dream of perception. Enjoy them without investing them with the permanence that only Heaven has. Thank the Holy Instant for its grace and then let it go. The next instant is a new choice.</p>
+          <p>The superior person knows the nature of the cycle. After abundance, comes splitting apart. They are not seduced by the high times or despairing in the low times. They remain centered, knowing this is the way things are.</p>
+          <p>The feeling of completion is a light, wonderful energy. The temptation is to cling to it. The practice is to release that feeling of clinging. Welcome the perfection, and then welcome its passing. Release the attachment to the high so you are not afraid of the low.</p>
+          <p>Success brings its own dangers. The ego wants to celebrate grandly. It wants a feast. A spectacle.</p>
+          <p>The neighbor in the east who slaughters an ox does not attain as much real happiness as the neighbor in the west with a small offering. The grand gesture produces less than the simple one. Release the grand celebration. A small, sincere acknowledgment is worth more than a feast. The anger at the smallness of what's appropriate is the demand for spectacle. Truth doesn't do spectacle.</p>
+          <p>There is another danger. Pride. "Getting the head wet." You went too far past the finish line. The completion was behind you and instead of resting, you kept going. The pride of "I can handle more" took you past the edge.</p>
+          <p>Drop the pride. Come back to where the ground is solid. The completion was the destination. What you entered beyond it was the next journey's territory, and you are not ready for that journey yet.</p>
+          <p>What is the fruit of this way of living? Grace.</p>
+          <p>Grace is not something you achieve or add to your life. It is what is uncovered when you release the clinging to both perfection and imperfection.</p>
+          <p>Grace is truth's appearance in the world of form. It is the beauty that appears when the outside of your life matches its inside. It is the face without makeup. The room with nothing unnecessary in it. Not sparse, but honest.</p>
+          <p>You cannot manufacture this life of grace. You can only release what is preventing it. The clinging. The pride. The fear. The performance.</p>
+          <p>What remains is "Accumulated Wisdom."</p>
+          <p>What remains is Grace.</p>
+          <p>What remains is You.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="writing-entry" onclick="toggleWriting(this)">
+      <div class="writing-header">
+        <div>
+          <p class="writing-title">On building as devotion</p>
+          <p class="writing-excerpt">What it means to write code as a spiritual practice — not metaphorically, but as the actual thing.</p>
+        </div>
+        <span class="writing-toggle">+</span>
+      </div>
+      <div class="writing-body">
+        <div class="writing-body-inner">
+          <p>Why is almost nothing written about Jesus in his youth? Luke gives us one account — Jesus at fourteen, already prodigious among the teachers, already knowing: <em>"Don't you know I must be about my Father's business?"</em></p>
+          <p>Then silence. Sixteen years before the ministry begins.</p>
+          <p>I've wondered about those years for a long time. What was he studying? What was he saying? What did he wish for? How did he live his daily life? Reading between the lines, he must have been practicing — quietly, in his own way. He knew the Law and the Prophets. He taught them with an eloquence that could only come from having lived inside them. He was the ultimate flowering of the thought and tradition of his own time. That doesn't happen overnight. It happens in the silent years.</p>
+          <p>But those years were never written down. And that silence left a gap — not just in scripture, but in the model of what a life of devotion actually looks like while you're living it. Before the teaching. Before the ministry. Before anyone knows your name.</p>
+          <p>What does a twenty-year-old do with the call to wake up?</p>
+          <p>Growing up, the dominant narrative was simple: go to school, get a job. That narrative is falling apart. The tools change — books, technology, whatever comes next — but the need doesn't. A young person still needs a way to return to what they are. The question is what materials they pick up.</p>
+          <p>I picked up A Course in Miracles. I believe it to be the most significant book of the last two thousand years. Believed to have been channeled from Jesus himself, it is profoundly poetic and prophetic in ways we have yet to fully appreciate. Its form is unlike anything that came before — 365 daily lessons that don't teach you a philosophy but undo the one you already have. It doesn't add anything to the mind. It returns the mind to its original state. Innocent. Free. Loving. It will be a great and timeless classic for countless generations to come, brought to life in their own ways.</p>
+          <p>I picked up the I Ching. Another foundational text — the bedrock beneath Daoist and Confucian thought — and yet, like the Course, entirely beyond religion. It's a tool for living in harmony with the underlying principles of existence. When applied to the way of the Course — forgiveness, releasing, self-realization — each hexagram becomes a mirror showing you where energy moves and where you're holding on.</p>
+          <p>And then I did something I didn't expect. I started building.</p>
+          <p>Not building as a career move. Not building as self-expression. Building as the practice itself. I wrote code that holds these two traditions — the Course and the I Ching — in a single daily practice. An app called The Way. Each day, a lesson. Each practice, a reading. The ancient and the immediate, meeting in the same space.</p>
+          <p>The act of building sharpened something in me. Writing code for this — choosing every word of every hexagram reading, discerning what was true from what was merely clever, sitting with the I Ching's counsel on its own presentation — all of it became a form of study not unlike what I imagine those silent years must have held. Not public. Not performative. Just a person alone with the materials, working carefully, letting the work change them.</p>
+          <p>I'm lighter now. Freer. More certain that this direction works — not because I've arrived anywhere, but because the practice keeps proving itself. All my energies get directed increasingly toward the Highest, and all else falls away.</p>
+          <p>That's what building as devotion means. Not that the code is sacred. But that the attention you bring to it can be. The silent years weren't wasted. They were the real work. And they don't have to go unwritten anymore.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="writing-entry" onclick="toggleWriting(this)">
+      <div class="writing-header">
+        <div>
+          <p class="writing-title">The sense of separation</p>
+          <p class="writing-excerpt">How A Course in Miracles and the releasing tradition point to the same recognition, from different angles.</p>
+        </div>
+        <span class="writing-toggle">+</span>
+      </div>
+      <div class="writing-body">
+        <div class="writing-body-inner">
+          <p>The core of any spiritual teaching is letting go. The Course calls it forgiving. Lester calls it releasing. Different words for the same movement — the willingness to stop holding on to what was never real.</p>
+          <p>Both begin from the same place: you are already what you're looking for. Nothing needs to be added. Nothing needs to be achieved. The only thing between you and the recognition of what you are is your own mind — layer upon layer of conditioning, accumulated over what feels like forever, believed in so completely that it passes for identity. The whole spiritual path is simply this: letting it go before the body drops it for you. Nothing is accomplished through death. Everything is accomplished through release.</p>
+          <p>But how? That's where these two traditions become so remarkable. They don't just point at freedom — they describe the mechanics of what's in the way.</p>
+          <p>The Course works through forgiveness. Not the forgiveness of common understanding — not pardoning someone for a real offense — but the recognition that the offense was never real to begin with. What you thought happened didn't happen the way you think it did, because the one it happened to doesn't exist the way you think it does. Forgiveness in the Course is the undoing of the belief in separation itself. Every grievance, every judgment, every fear is a thread you can pull, and when you pull it honestly, the whole fabric loosens.</p>
+          <p>Lester works through releasing. Direct, almost startlingly simple. You feel what you feel — the grief, the fear, the wanting, the pride — and you let it go. Not by understanding it. Not by processing it. Just by opening your hand. Lester saw that the mind accumulates in layers — heavy ones at the bottom, subtler ones above — and that each layer released reveals more of what was always underneath. Your natural state. Innocent, free, loving.</p>
+          <p>What strikes me, practicing both, is how precisely they complement each other. The Course gives language to what separation is — its structure, its logic, its hiding places. It shows you <em>what</em> you're holding. Lester gives you the mechanics of <em>how</em> to drop it. The Course says: this grievance is a belief in separation. Lester says: can you let it go? The Course illuminates. Releasing acts.</p>
+          <p>Releasing is simple — just Be. All else passes away.</p>
+          <p>Releasing is deep. Thousands of years of conditioning, believed in absolutely, defended fiercely. But it all goes when brought to light. That's the shared discovery. Both traditions speak simply about the most profound thing a human being can encounter: the recognition that what you thought you were — the whole accumulated weight of it — can be set down. And what remains is not emptiness but fullness. Not loss but return.</p>
+          <p>I built The Way to hold these two traditions in daily conversation. Each day, a lesson from the Course. Each practice, a reading from the I Ching that mirrors the inner territory the lesson opens. But underneath that structure is this deeper convergence — the recognition that forgiveness and releasing are two hands opening the same door. One shows you the door. The other shows you that your hand was on the knob the whole time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="writing-entry" onclick="toggleWriting(this)">
+      <div class="writing-header">
+        <div>
+          <p class="writing-title">Consulting the oracle</p>
+          <p class="writing-excerpt">Why I take the I Ching seriously. What it means to ask a question and receive an answer you didn't manufacture.</p>
+        </div>
+        <span class="writing-toggle">+</span>
+      </div>
+      <div class="writing-body">
+        <div class="writing-body-inner">
+          <p>You sit with a question. Not a casual one — something you've been carrying. You throw three coins, six times. The coins land. A hexagram forms. You read.</p>
+          <p>And then something happens that's difficult to explain to anyone who hasn't experienced it. The answer is <em>right</em>. Not right the way a horoscope is right — vague enough to fit anything. Right the way a mirror is right. It shows you exactly what you were looking at but couldn't see. Specific. Unflattering sometimes. Precise in a way that makes you go quiet.</p>
+          <p>The first time this happens, you can dismiss it. Coincidence. Pattern-seeking. The mind finding what it wants to find. But it keeps happening. And the answers get stranger — not stranger as in more bizarre, but stranger as in more intimate. The I Ching starts answering questions you didn't know you were asking. It responds to what's underneath the question. It addresses the one who's asking, not just what they asked.</p>
+          <p>That's when it stops being a book and starts being something else entirely.</p>
+          <p>I don't have a theory for why it works. I've stopped needing one. What I can say is what it does: it answers you as part of existence in relation to existence. Not as an isolated person with a private problem, but as a movement within a larger movement. Your situation is not separate from the situation of everything. The I Ching seems to know this — to operate from this knowing — and when you consult it honestly, it shows you where you stand in the whole picture.</p>
+          <p>The accumulated wisdom in it is staggering. Thousands of years of watching how energy moves — how situations rise, crest, dissolve, and return. All of it distilled into sixty-four hexagrams, each one a landscape of being, each line a position within that landscape. It's not mystical in the way people expect. It's observational. Precise. Almost scientific in its patience. Existence moves in patterns. The I Ching mapped them. And when you throw the coins, you're not generating randomness — you're letting the pattern show you where you are.</p>
+          <p>There's a question beneath every consultation, whether you voice it or not: is there something in you that sees all of this — the thoughts, the feelings, the identities, the beliefs — without being any of it? Something unmoving, watching the movement? The I Ching speaks from that place. That's why the answers feel like they come from beyond the limits of thought. They do. Not from somewhere supernatural, but from somewhere deeper than the mind that asked.</p>
+          <p>I consult the I Ching for real decisions. When I needed to know whether to separate The Way from my personal site, I asked. The reading counseled a clean, sincere release — and that clarity was worth more than weeks of deliberation. I didn't manufacture that answer. I couldn't have. It arrived the way truth arrives when you make space for it.</p>
+          <p>This is why I built the I Ching into The Way as the oracle system. Not as decoration. Not as a novelty. As the other half of the daily practice. The Course lesson opens something in you — and the oracle shows you where it's opening, what's moving, what's ready to be released. One speaks to you in the language of forgiveness. The other speaks in the language of change. Together they say the same thing: let go, and see what's always been here.</p>
+          <p>The experiences that follow are beyond words. Not because they're dramatic, but because they're quiet. A steadiness. An alignment you didn't arrange. The feeling of being in tune with something you can't name but can no longer deny. The I Ching doesn't give you that feeling. It shows you it was already there.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="reveal">
+    <h2>What's real approaching what's ready.</h2>
+    <p style="max-width: 520px; margin: 0 auto 40px; color: var(--text-dim);">
+      If something here resonates — if you're working with these traditions or want to — I'd welcome hearing from you.
+    </p>
+    <a href="mailto:curtis@curtisgrubb.org" class="contact-email">curtis@curtisgrubb.org</a>
+  </div>
+</section>
+
+<footer>
+  <p>Curtis Grubb · 2026</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav show/hide after hero
+  const nav = document.getElementById('nav');
+  const hero = document.querySelector('.hero');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      nav.classList.toggle('hidden', entry.isIntersecting);
+    });
+  }, { threshold: 0.5 });
+  heroObserver.observe(hero);
+
+  // Writing toggle
+  function toggleWriting(entry) {
+    const wasOpen = entry.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.writing-entry.open').forEach(e => e.classList.remove('open'));
+    // Open clicked if it wasn't already open
+    if (!wasOpen) {
+      entry.classList.add('open');
+      setTimeout(() => {
+        entry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+</script>
+
+</body>
+</html>
