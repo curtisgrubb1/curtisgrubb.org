@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accumulated Wisdom — Curtis Grubb</title>
+<meta name="description" content="Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.">
+<link rel="canonical" href="https://curtisgrubb.org/accumulated-wisdom">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://curtisgrubb.org/accumulated-wisdom">
+<meta property="og:site_name" content="Curtis Grubb">
+<meta property="og:title" content="Accumulated Wisdom">
+<meta property="og:description" content="Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.">
+<meta property="og:image" content="https://curtisgrubb.org/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Accumulated Wisdom">
+<meta name="twitter:description" content="Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.">
+<meta name="twitter:image" content="https://curtisgrubb.org/og-image.png">
+<meta name="theme-color" content="#0d0b09">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%23c4a46a' stroke-width='7'/></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Accumulated Wisdom",
+  "description": "Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.",
+  "url": "https://curtisgrubb.org/accumulated-wisdom",
+  "author": { "@type": "Person", "name": "Curtis Grubb", "url": "https://curtisgrubb.org/" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0b09;
+    --bg-surface: #151210;
+    --bg-card: #1a1714;
+    --text: #c8bfb2;
+    --text-dim: #7a7168;
+    --text-faint: #4a433c;
+    --gold: #c4a46a;
+    --gold-dim: #8a7550;
+    --warm-white: #e8dfd2;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* === SCROLL REVEAL === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(13,11,9,0.95), rgba(13,11,9,0));
+    transition: opacity 0.6s ease;
+  }
+  nav.hidden { opacity: 0; pointer-events: none; }
+  .nav-name {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(196,164,106,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim));
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: lineGrow 2s ease 0.5s forwards;
+  }
+  @keyframes lineGrow {
+    from { opacity: 0; height: 0; }
+    to { opacity: 1; height: 80px; }
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 80px);
+    color: var(--warm-white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-epithet {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1.6s forwards;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    opacity: 0;
+    animation: fadeUp 1.5s ease 2.2s forwards;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: var(--text-faint);
+    margin: 12px auto 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* === SECTIONS === */
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 40px;
+  }
+
+  .section-label {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 40px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 80px auto;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--warm-white);
+    line-height: 1.3;
+    margin-bottom: 32px;
+  }
+
+  p {
+    margin-bottom: 24px;
+    font-size: 19px;
+  }
+
+  p.italic-voice {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1.8;
+  }
+
+  a.text-link {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    transition: border-color 0.3s;
+  }
+  a.text-link:hover {
+    border-color: var(--gold);
+  }
+
+  /* === THE WAY SECTION === */
+  .way-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(196,164,106,0.1);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-top: 40px;
+    text-align: center;
+    transition: border-color 0.4s;
+  }
+  .way-card:hover {
+    border-color: rgba(196,164,106,0.25);
+  }
+  .way-card-name {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 16px;
+  }
+  .way-card-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+  .way-card-desc {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 17px;
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .way-link {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 12px 32px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .way-link:hover {
+    background: rgba(196,164,106,0.08);
+    border-color: var(--gold);
+  }
+
+  /* === WRITINGS === */
+  .writing-entry {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(196,164,106,0.08);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .writing-entry:first-of-type {
+    border-top: 1px solid rgba(196,164,106,0.08);
+  }
+  .writing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .writing-toggle {
+    font-family: var(--sans);
+    font-size: 18px;
+    color: var(--gold-dim);
+    transition: transform 0.4s ease, color 0.3s;
+    flex-shrink: 0;
+    margin-left: 16px;
+    margin-top: 4px;
+  }
+  .writing-entry.open .writing-toggle {
+    transform: rotate(45deg);
+    color: var(--gold);
+  }
+  .writing-date {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+  }
+  .writing-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--warm-white);
+    margin-bottom: 8px;
+  }
+  .writing-excerpt {
+    color: var(--text-dim);
+    font-size: 17px;
+  }
+  .writing-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease, opacity 0.6s ease;
+    opacity: 0;
+  }
+  .writing-entry.open .writing-body {
+    max-height: 20000px;
+    opacity: 1;
+  }
+  .writing-body-inner {
+    padding-top: 32px;
+  }
+  .writing-body-inner p {
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .writing-body-inner .article-break {
+    width: 32px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 40px 0;
+  }
+  .writing-body-inner .chapter-title {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+  }
+
+  /* === CONTACT === */
+  .contact-section {
+    text-align: center;
+    padding: 160px 40px;
+  }
+  .contact-section h2 {
+    margin-bottom: 24px;
+  }
+  .contact-email {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .contact-email:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    section { padding: 80px 24px; }
+    .way-card { padding: 36px 24px; }
+    .contact-section { padding: 100px 24px; }
+  }
+
+  /* === ESSAY PAGES === */
+  .essay-section h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 5vw, 48px); color: var(--warm-white); line-height: 1.2; margin-bottom: 20px; }
+  .essay-lede { font-style: italic; color: var(--text-dim); font-size: 19px; margin-bottom: 48px; }
+  .writing-body-inner h2.chapter-title { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin: 0 0 24px; }
+  .more-links p { margin-bottom: 12px; font-size: 18px; }
+  a.nav-home { text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name nav-home" href="/">Curtis Grubb</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#writing">Writing</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<section class="essay-section">
+  <p class="section-label">Reflections</p>
+  <h1>Accumulated Wisdom</h1>
+  <p class="essay-lede">Five chapters on thinking, speaking, doing, wishing, and living — where A Course in Miracles, the I Ching, and the releasing tradition meet.</p>
+  <div class="writing-body-inner">
+          <h2 class="chapter-title">Chapter 1 — On Thinking</h2>
+          <p>The mind is a prison. You are the warden and the inmate. Thoughts are the constant chatter of the guards. You watch them. You name them. You try to organize them. You believe them.</p>
+          <p>This is the prison. The endless effort to manage the stream. The exhaustion of the one who watches. The seer. It is tired. It has been on duty for a lifetime.</p>
+          <p>There is another way. It is not a new technique. It is not a belief system. It is a state of being. Stillness.</p>
+          <p>A mountain does not try to be still. It is still. This is its nature. Wind and storms pass over it. Snow covers it. The sun warms it. The mountain does not move. It allows.</p>
+          <p>Your thoughts are the weather. They come and go. You are not the weather. You are the mountain. The practice is not to stop the storm. It is to remember you are the mountain.</p>
+          <p>The prison of the mind is built from one thing: the seer. The one who believes the thoughts are real. The one who needs them to mean something. The one who says, "I am thinking this."</p>
+          <p>What if the one who says this is the thought?</p>
+          <p>This is the release. Not a fight. A letting go. A decrease of the one who holds on.</p>
+          <p>A Course in Miracles calls this the Holy Instant. It is the moment you stop listening to the ego's chatter and choose silence. It is the choice to be still.</p>
+          <p>The I Ching speaks of the superior person who "does not permit their thoughts to go beyond the situation." They are so present, so still, the thought has no power to pull them out of the moment. It arises, and it passes.</p>
+          <p>The Releasing tradition points to the ultimate freedom. The release of the "releaser." The "I" who is trying to let go. When you let go of that one, what remains? Stillness. Pure. Unmoved.</p>
+          <p>There is a danger here. A trap. The pride of stillness.</p>
+          <p>You begin to feel quiet. You feel a peace. The mind calms. A new thought arises: "I am the one who is still. I have achieved this. I am spiritual."</p>
+          <p>This is the last guard in the prison. The most subtle one. Do not believe it. This is still the seer, wearing a new robe. Release this one too. Be the absence of the one who is proud of being still.</p>
+          <p>Be that absence. The room fills on its own.</p>
+          <p>This chapter is not an answer. It is a pointing. It is a finger pointing to the moon. Do not look at the finger. Look where it points.</p>
+          <p>The mountain is there. It has always been there. It is not hiding. It is waiting.</p>
+          <p>Be still.</p>
+
+          <div class="article-break"></div>
+
+          <h2 class="chapter-title">Chapter 2 — On Speaking</h2>
+          <p>You use words to build bridges. You talk to connect. You argue to prove. You explain to be understood. You fill the silence so you are not alone.</p>
+          <p>This is a performance. A desperate attempt to create union on the outside because you feel a lack on the inside. You are trying to gather water with a net. You are holding to the wrong thing.</p>
+          <p>True connection is not made with words. It is revealed through them.</p>
+          <p>Water on the earth flows naturally toward the lowest point. It does not decide to gather. It does not strategize. It follows its nature. This is "Holding Together."</p>
+          <p>Right speech is a byproduct of this inner state. It is not a technique to be learned. The practice is not to speak better. The practice is to release everything that prevents you from being held together by the truth of what you are.</p>
+          <p>Every word is either an expression of love or a call for love. The ego's speech is a frantic call for love disguised as attack or defense. It is the sound of separation. True speech is the quiet joining that happens when the fear of separation is released. It needs very few words.</p>
+          <p>The superior person's words have weight because they come from a centered place. They are like water that has already gathered. Their flow is natural and purposeful because they are already "holding together" internally.</p>
+          <p>The urge to speak is a feeling. A pressure in the chest. A fear of being misunderstood. This feeling can be welcomed and released. When the pressure is gone, what remains? Either profound silence, or words that arise from that silence, not from the need to escape it.</p>
+          <p>Sometimes you feel numb. You think, "I have nothing to say." Or "Nothing matters." This is not peace. It is a blockage. The instruction is to stop pretending. Let yourself settle. Find the one true thing, however small, and speak from that.</p>
+          <p>You fear silence. You fear being alone. This fear keeps you talking. But the loneliness of releasing the need to impress or defend is the very doorway to genuine union. Speaking from this place of true solitude is what creates real connection.</p>
+          <p>There is another trap. The spiritual ego. It uses silence as a badge of honor. This is the "pride of distance." It keeps you safe from vulnerability. True joining requires you to be seen. You must be willing to step in with both feet and speak from the heart, even if your voice shakes.</p>
+          <p>Right speech is impossible when the household of the self is in chaos. The part that wants to talk. The part that is afraid. The part that wants to hide. They are all in one house.</p>
+          <p>The practice is not to control these parts. It is to tend the inner fire. To create a quality of inner warmth so consistent that every part feels held.</p>
+          <p>Words must have substance. What is said must match what is felt.</p>
+          <p>When your inner world is aligned, your outer expression will organize itself. It will flow like water.</p>
+
+          <div class="article-break"></div>
+
+          <h2 class="chapter-title">Chapter 3 — On Doing</h2>
+          <p>You want to be still. The world requires you to do.</p>
+          <p>This is the core opposition. The desire for non-action. The demand for action.</p>
+          <p>Fire above lake. Heat rising, water sinking. Two natural movements that can never meet because they move in opposite directions.</p>
+          <p>This is not a problem to be solved. It is a reality to be accepted. Opposition in itself is not a disaster. What's disastrous is the insistence that everything must agree. Stop insisting. The practice is not to choose one side over the other. The practice is to release the feeling of being torn apart by the choice.</p>
+          <p>You are asked to be in the world but not of it. The opposition is between the ego's frantic "doing" and the Holy Spirit's peaceful "being." The practice is to let all action be done <em>through</em> you, as you rest in the awareness of your true being. You do not stop acting. You stop believing you are the one who is acting.</p>
+          <p>The superior person navigates opposition by acting according to the time. Sometimes the right action is to advance. Sometimes it is to retreat. Wisdom is not in choosing a side, but in knowing which movement the moment requires. Action and non-action are both tools in your hand.</p>
+          <p>The opposition is felt as a pressure, a tension in your being. The practice is to release that feeling of tension. You don't solve the paradox. You release the feeling of being torn apart <em>by</em> the paradox. When the feeling is released, you can act freely, even if the contradiction remains.</p>
+          <p>This practice will isolate you.</p>
+          <p>You will feel like a stranger among your own people. They will not understand your new priorities, your need for silence, your reluctance to engage in old dramas. You will feel the ache of wanting their approval. The longing for someone who sees what you see.</p>
+          <p>This is the teaching. Meet the true person. Not out there. In here.</p>
+          <p>In the opposition itself, there is a part of you that has been waiting for exactly this isolation to become visible. Release the wanting of external connection. The connection you need is with the part of yourself that thrives in opposition. The part that gets clearer when challenged. The part that was never looking for agreement. Trust that part. Let the opposition introduce you to yourself.</p>
+          <p>This is the secret: welcoming the contradiction <em>is</em> the practice.</p>
+          <p>This welcoming is a form of "Decrease." You are subtracting the demand for a tidy, non-paradoxical reality. You are subtracting the need for everyone to understand.</p>
+          <p>Each subtraction reveals what was always underneath. By letting go of the need to reconcile, you reveal the simple, clear fact of your own Being. It can hold any opposition without breaking.</p>
+          <p>Less is genuinely more.</p>
+          <p>By doing less to resolve the opposition, you gain more of your own centered power. The decrease of the need to reconcile is the increase of your capacity to be.</p>
+
+          <div class="article-break"></div>
+
+          <h2 class="chapter-title">Chapter 4 — On Wishing</h2>
+          <p>You wish. The world does not answer.</p>
+          <p>Heaven and earth move apart. The creative rises away. The receptive sinks down. A silence grows between them. This is Standstill.</p>
+          <p>Your wishing feels like shouting into a void. The desire for more, for different, for better. It meets a frozen landscape. Unresponsive. Cold.</p>
+          <p>This is not failure. It is a season.</p>
+          <p>The ground freezes not because it is dead, but because what is alive needs protection. What is being protected right now is something too new, too tender, too true to be exposed to the noise of constant activity. Something is working underground. It does not need to be checked on. It needs to be left alone.</p>
+          <p>The practice is not to fight the stillness. It is to honor it. It is a "Decrease" of all striving. All effort. All spiritual performance.</p>
+          <p>This is the dark night of the soul. The time to withdraw belief in the ego's frantic solutions and simply wait in the quiet darkness. Trust the light is there, even when you cannot see it. This is the ultimate not-doing.</p>
+          <p>Standstill is a specific time in the cycle. The superior person does not force progress. They conserve their energy. They wait for the season to turn.</p>
+          <p>The feeling of being stuck is a heavy energy. Do not try to release a specific wanting. Release the entire feeling of being stuck. Welcome the stagnation. The grief. The shame. Release the resistance to standstill itself.</p>
+          <p>In this stillness, voices will arise. The lesser voices that flatter and perform. They say, "You should be doing more. Feeling more. Being more." These voices sound like ambition. They are actually grief. The mourning of a self that was defined by its doing and now has nothing to do.</p>
+          <p>Release the doing-self.</p>
+          <p>The great person endures standstill without complaining. Without pretending it is not happening. Just be in it. Honestly. Without performing patience. Without narrating your own progress. Just be in the quiet. Let the grief of inactivity wash through you until it runs out of things to mourn.</p>
+          <p>Something embarrassing will surface. A pretense you have been maintaining. A spiritual performance that worked when things were moving, but now, in the stillness, stands exposed. The fear is acute: if this is seen, everything crumbles.</p>
+          <p>Good.</p>
+          <p>Let it crumble. The pretense was always crumbling. The standstill just made it visible. Release the shame. Recognize that the one who was pretending was itself a pretense. What was imagined pretended to be spiritual. Now the pretense is visible. This visibility is not the problem. It is the cure. What is revealed can finally be released. What is hidden keeps operating.</p>
+          <p>The standstill will end.</p>
+          <p>When it does, something will "Come to Meet" you. An old wanting. A comfort that slips back in through a crack left open. This happens not during the struggle, but after. In the comfort of having made progress. In the relaxation that follows breakthrough.</p>
+          <p>That is when the dark line enters.</p>
+          <p>Be vigilant. See the approaching wanting for what it is. Before it takes root.</p>
+
+          <div class="article-break"></div>
+
+          <h2 class="chapter-title">Chapter 5 — On Living</h2>
+          <p>Sometimes, everything is in its right place. The practice works. The inner and outer worlds align. A moment of perfect order. This is "After Completion."</p>
+          <p>Water above fire. Every line in its correct position. For one rare, perfect moment, everything is exactly where it belongs.</p>
+          <p>And now, the most important thing you will ever hear: after completion comes before completion. The moment of perfect order is also the moment when disorder begins its return. Not because something went wrong. Because that is how reality works.</p>
+          <p>The fox that almost crossed the water gets its tail wet at the very end. The art of living is enjoying the perfection without clinging to it. What clings to perfection is the sense of separation, and its fingerprints on perfection are the first signs of dissolution.</p>
+          <p>The practice is not to hold onto the good, but to release the attachment to it. It is a "Decrease" of the need for the good moment to last forever.</p>
+          <p>Even the highest states of peace are still within the dream of perception. Enjoy them without investing them with the permanence that only Heaven has. Thank the Holy Instant for its grace and then let it go. The next instant is a new choice.</p>
+          <p>The superior person knows the nature of the cycle. After abundance, comes splitting apart. They are not seduced by the high times or despairing in the low times. They remain centered, knowing this is the way things are.</p>
+          <p>The feeling of completion is a light, wonderful energy. The temptation is to cling to it. The practice is to release that feeling of clinging. Welcome the perfection, and then welcome its passing. Release the attachment to the high so you are not afraid of the low.</p>
+          <p>Success brings its own dangers. The ego wants to celebrate grandly. It wants a feast. A spectacle.</p>
+          <p>The neighbor in the east who slaughters an ox does not attain as much real happiness as the neighbor in the west with a small offering. The grand gesture produces less than the simple one. Release the grand celebration. A small, sincere acknowledgment is worth more than a feast. The anger at the smallness of what's appropriate is the demand for spectacle. Truth doesn't do spectacle.</p>
+          <p>There is another danger. Pride. "Getting the head wet." You went too far past the finish line. The completion was behind you and instead of resting, you kept going. The pride of "I can handle more" took you past the edge.</p>
+          <p>Drop the pride. Come back to where the ground is solid. The completion was the destination. What you entered beyond it was the next journey's territory, and you are not ready for that journey yet.</p>
+          <p>What is the fruit of this way of living? Grace.</p>
+          <p>Grace is not something you achieve or add to your life. It is what is uncovered when you release the clinging to both perfection and imperfection.</p>
+          <p>Grace is truth's appearance in the world of form. It is the beauty that appears when the outside of your life matches its inside. It is the face without makeup. The room with nothing unnecessary in it. Not sparse, but honest.</p>
+          <p>You cannot manufacture this life of grace. You can only release what is preventing it. The clinging. The pride. The fear. The performance.</p>
+          <p>What remains is "Accumulated Wisdom."</p>
+          <p>What remains is Grace.</p>
+          <p>What remains is You.</p>
+  </div>
+
+  <div class="article-break" style="margin: 64px 0 40px;"></div>
+  <div class="more-links">
+    <p class="section-label">More reflections</p>
+      <p><a class="text-link" href="/on-building-as-devotion">On Building as Devotion</a></p>
+      <p><a class="text-link" href="/the-sense-of-separation">The Sense of Separation</a></p>
+      <p><a class="text-link" href="/consulting-the-oracle">Consulting the Oracle</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Curtis Grubb · 2026</p>
+</footer>
+
+</body>
+</html>

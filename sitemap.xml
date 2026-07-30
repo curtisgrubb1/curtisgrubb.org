@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://curtisgrubb.org/</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
+  <url><loc>https://curtisgrubb.org/</loc><lastmod>2026-07-30</lastmod></url>
+  <url><loc>https://curtisgrubb.org/accumulated-wisdom</loc><lastmod>2026-07-30</lastmod></url>
+  <url><loc>https://curtisgrubb.org/on-building-as-devotion</loc><lastmod>2026-07-30</lastmod></url>
+  <url><loc>https://curtisgrubb.org/the-sense-of-separation</loc><lastmod>2026-07-30</lastmod></url>
+  <url><loc>https://curtisgrubb.org/consulting-the-oracle</loc><lastmod>2026-07-30</lastmod></url>
 </urlset>
